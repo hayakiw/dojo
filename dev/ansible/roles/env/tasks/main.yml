@@ -1,0 +1,33 @@
+---
+- name: Install mysql
+  apt: name={{ item }} state=latest
+  with_items:
+    - libmysqld-dev
+
+- name: Install rails and bundler
+  sudo_user: "{{ rbenv_user }}"
+  gem: name={{ item }} executable=~/.rbenv/shims/gem user_install=False
+  with_items:
+    - rails
+    - bundler
+
+- name: Install javascript tools
+  npm: name={{ item }} state=latest global=yes
+  with_items:
+    - bower
+    - grunt-cli
+
+- name: Add repository for ansible
+  apt_repository: repo='ppa:ansible/ansible' state=present
+
+- name: Install ansible and pip
+  apt: name={{ item }} state=latest
+  with_items:
+    - ansible
+    - python-pip
+
+# AWSを操作するライブラリ
+#- name: Install boto
+#  pip: name={{ item }} state=latest
+#  with_items:
+#    - boto

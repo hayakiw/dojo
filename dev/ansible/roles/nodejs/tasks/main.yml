@@ -1,0 +1,9 @@
+---
+#- name: Download setup shell for nodejs
+#  get_url: url="https://deb.nodesource.com/setup_0.12" dest="/tmp/setup_node.sh" mode=0755 validate_certs=no
+
+- name: Setup nodejs
+  shell: /vagrant/dev/install/setup_node12.sh
+
+- name: Install nodejs
+  apt: name=nodejs state=latest

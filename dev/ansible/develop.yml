@@ -1,0 +1,12 @@
+---
+- name: Build a Rails development environment
+  hosts: all
+  sudo: yes
+  connection: local
+
+  roles:
+    - apt-upgrade
+    - rbenv
+    - mysql
+    - nodejs
+    - env
