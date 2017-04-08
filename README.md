@@ -21,9 +21,9 @@ $ vagrant plugin install vagrant-vbguest
 ### Setup
 
 ```
-$ git clone git@github.com:hayakiw/ansible-rails5-mysql2.git
+$ git clone git@github.com:hayakiw/dojo.git
 
-$ cd ansible-rails5-mysql2/dev
+$ cd dojo/dev
 $ vagrant up
 
 ```
