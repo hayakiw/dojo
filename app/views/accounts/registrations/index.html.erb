@@ -1,0 +1,11 @@
+<h2>accounts list</h2>
+<ul>
+
+<% @accounts.each do |account| %>
+  <li>
+    <%= account.name %>
+    <br>
+    <%= account.email %>
+  </li>
+<% end %>
+</ul>

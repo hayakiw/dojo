@@ -4,6 +4,18 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role, class: "control-label" %>
+    <%= f.radio_button :role, :trial %><%= f.label :role_trial, "試用期間" %>
+    <%= f.radio_button :role, :employee %><%= f.label :role_employee, "正社員" %>
+    <%= f.radio_button :role, :administrator %><%= f.label :role_administrator, "管理者" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
