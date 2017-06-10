@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :customers
   get 'home/index'
 
-  devise_for :accounts, :controllers => { :registrations => 'accounts/registrations' }
+  devise_for :accounts, :controllers => { :registrations => 'accounts/registrations', :sessions => 'accounts/sessions' }
 
   devise_scope :account do
     get 'accounts', to: 'accounts/registrations#index'
