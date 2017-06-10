@@ -1,12 +1,11 @@
 class Accounts::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :require_no_authentication, only: [:new, :create, :cancel]
-  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
-  prepend_before_action :set_minimum_password_length, only: [:new, :edit]
-  before_action :configure_permitted_parameters
+  prepend_before_action :require_no_authentication, only: [:cancel]
+  prepend_before_action :authenticate_scope!, only: [:new, :create, :edit, :update, :destroy]
+  # prepend_before_action :set_minimum_password_length, only: [:new, :edit]
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def index
     @accounts = Account.all
-    p @accounts
   end
 
   # GET /resource/sign_up

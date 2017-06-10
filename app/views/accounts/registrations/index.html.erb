@@ -1,11 +1,11 @@
 <h2>accounts list</h2>
 <ul>
-
+<%= link_to "new", accounts_new_path, class: "btn btn-primary" %>
 <% @accounts.each do |account| %>
   <li>
     <%= account.name %>
-    <br>
     <%= account.email %>
+    <%= link_to "edit", edit_account_registration_path(account), class: "btn btn-primary" %>
   </li>
 <% end %>
 </ul>

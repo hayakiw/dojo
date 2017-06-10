@@ -11,7 +11,7 @@
   <header>
     <nav>
       <% if account_signed_in? %>
-        <%= link_to "ユーザー一覧", {controller: 'accounts/registrations', action: 'index'} %>
+        <%= link_to "ユーザー一覧", accounts_path %>
         <%= link_to 'プロフィール変更', edit_account_registration_path %>
         <%= link_to 'ログアウト', destroy_account_session_path, method: :delete %>
       <% else %>
@@ -24,6 +24,6 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-
+<%= debug(params) if Rails.env.development? %>
   </body>
 </html>
