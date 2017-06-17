@@ -1,0 +1,71 @@
+
+
+
+<div class="contents">
+
+  <%= form_for [:admins, @account], :html => {class: 'form'} do |f| %>
+    <div class="table fixed">
+
+        <div class="row m_u20">
+          <div class="col resp_m_u10">
+            <div class="th">名前 <span class="label alert">必須</span></div>
+            <div class="td">
+              <!-- <input value="" name="input" placeholder="" class="w100" id="client" type="text"> -->
+              <%= f.text_field :name, class: "w100" %>
+            </div>
+          </div>
+          <!-- / .col -->
+        </div>
+        <!-- / .row -->
+        <div class="row m_u20">
+          <div class="col resp_m_u10">
+            <div class="th">メールアドレス <span class="label alert">必須</span></div>
+            <div class="td">
+              <!-- <input value="" name="input" placeholder="example@ebase-sl.jp" class="w100" id="client" type="text"> -->
+              <%= f.text_field :email, class: "w100" %>
+            </div>
+          </div>
+          <!-- / .col -->
+        </div>
+        <!-- / .row -->
+        <div class="row m_u20">
+          <div class="col resp_m_u10">
+            <div class="th">パスワード <span class="label alert">必須</span></div>
+            <div class="td">
+              <!-- <input value="" name="input" placeholder="" class="w100" id="client" type="text"> -->
+              <%= f.password_field :password, class: "w100" %>
+            </div>
+          </div>
+          <!-- / .col -->
+        </div>
+        <!-- / .row -->
+        <div class="row m_u20">
+          <div class="col resp_m_u10">
+            <div class="th">権限 <span class="label alert">必須</span></div>
+            <div class="td">
+             <div class="selectWrap w100">
+               <%= f.select(
+                   :role,
+                     {'試用期間' => :trial, '正社員' => :employee, '管理者' => :administrator},
+                  #  { include_blank: "Please select one" },
+                   { class: "form-control" }
+               ) %>
+            <!-- <select name="select">
+              <option value="試用期間" selected="selected">試用期間</option>
+              <option value="正社員">正社員</option>
+              <option value="管理者">管理者</option>
+            </select> -->
+          </div>
+            </div>
+          </div>
+          <!-- / .col -->
+        </div>
+        <!-- / .row -->
+    </div>
+    <!-- / .table fixed -->
+    <div class="btns tc">
+      <button class="btn blue w30 center" type="button" onclick="parent.location.href='user_list.html'">登録</button>
+      <a href="user_list.html" class="btn default w30 center" target="_parent">閉じる</a></div>
+
+  <% end %>
+</div>
