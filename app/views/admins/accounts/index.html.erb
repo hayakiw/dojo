@@ -7,7 +7,7 @@
         <h1>ユーザー一覧</h1>
       </div>
       <!-- / .title -->
-      <div class="extra fl"><a href="user_addition.html" class="btn addition open">新規ユーザー追加</a></div>
+      <div class="extra fl"><%= link_to "新規ユーザー追加", new_admins_account_path, class: "btn addition open" %></div>
     </div>
     <!-- / .sectionHeader -->
     <div class="contents list">
@@ -25,7 +25,7 @@
           <td><%= account.name %></td>
           <td><%= account.email %></td>
           <td><%= account.rolename %></td>
-          <td><a href="user_edit.html" class="btn blue addition open"><span class="icon-edit"></span> 編集</a></td>
+          <td><%= link_to edit_admins_account_path(account), class: "btn blue addition open" do %><span class="icon-edit"></span> 編集<% end %><a href="user_edit.html" class="btn blue addition open"></a></td>
           <td><a href="user_delete.html" class="btn red open"><span class="icon-delete"></span> 削除</a></td>
         </tr>
         <% end %>

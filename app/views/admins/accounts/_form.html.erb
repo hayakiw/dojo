@@ -5,7 +5,9 @@
 
   <%= form_for [:admins, @account], :html => {class: 'form'} do |f| %>
     <div class="table fixed">
-
+<% f.object.errors.full_messages.each do |mess| %>
+<%= mess %>
+<% end %>
         <div class="row m_u20">
           <div class="col resp_m_u10">
             <div class="th">名前 <span class="label alert">必須</span></div>
@@ -64,8 +66,8 @@
     </div>
     <!-- / .table fixed -->
     <div class="btns tc">
-      <button class="btn blue w30 center" type="button" onclick="parent.location.href='user_list.html'">登録</button>
-      <a href="user_list.html" class="btn default w30 center" target="_parent">閉じる</a></div>
+      <button class="btn blue w30 center" type="submit">登録</button>
+      <%= link_to "閉じる", admins_accounts_path, class: "btn default w30 center", target: '_parent' %></div>
 
   <% end %>
 </div>
