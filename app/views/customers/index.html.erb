@@ -62,16 +62,15 @@ $(document).ready(function() {
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.name %></td>
-              <td><%= customer.status %></td>
+              <% if customer.status %><td>有効</td><% else %><td>無効</td><% end %>
               <td><%= link_to 'Show', customer %></td>
-              <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-              <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to '編集', edit_customer_path(customer), class: "btn blue addition open"  %></td>
+              <td><%= link_to '削除', customer, class: "btn red open", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
-
-
       </table>
+
       <ul class="pagination">
         <li class="disabled"><a rel="prev" href="#" class="prev">«</a></li>
         <li class="active"><a href="#">1</a></li>
@@ -81,6 +80,7 @@ $(document).ready(function() {
         <li><a href="#">5</a></li>
         <li><a rel="next" href="#" class="next">»</a></li>
       </ul>
+
     </div>
     <!-- / .contents.list -->
   </section>
