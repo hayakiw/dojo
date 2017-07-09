@@ -71,15 +71,7 @@ $(document).ready(function() {
         </tbody>
       </table>
 
-      <ul class="pagination">
-        <li class="disabled"><a rel="prev" href="#" class="prev">«</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a rel="next" href="#" class="next">»</a></li>
-      </ul>
+      <%= will_paginate @customers , previous_label: "«", next_label: "»" %>
 
     </div>
     <!-- / .contents.list -->
