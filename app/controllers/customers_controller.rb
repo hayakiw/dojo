@@ -20,6 +20,8 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+    @customer = Customer.find(params[:id])
+    render layout: "modal"
   end
 
   # POST /customers
@@ -27,15 +29,20 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
 
-    respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
-    end
+    @customer.save
+
+
+    redirect_to customers_url
+
+    # respond_to do |format|
+    #   if @customer.save
+    #     format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+    #     format.json { render :show, status: :created, location: @customer }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @customer.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /customers/1
