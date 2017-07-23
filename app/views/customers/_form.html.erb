@@ -17,21 +17,17 @@ $(function(){
       <div class="title fl">
         <h1><%= title %></h1>
       </div>
-      <!-- / .title -->
     </div>
-    <!-- / .sectionHeader -->
     <div class="contents">
 
       <%= form_for(@customer) do |f| %>
         <div class="table fixed">
-
           <div class="row m_u10">
             <div class="col resp_m_u10">
               <div class="th">顧客名 <span class="label alert">必須</span></div>
                 <%= f.text_field :name, class: "w100", id: "client"%>
             </div>
          </div>
-
           <div class="row m_u10">
             <div class="td">
               <label for="valid" class="w100" >
@@ -44,15 +40,14 @@ $(function(){
               </label>
             </div>
           </div>
-
         </div>
-
           <div class="btns tc">
             <%= f.submit '登録', class:"btn blue w30 center"%>
             <input type="button" class="btn default w30 center close-btn" value="閉じる">
           </div>
         </div>
       <% end %>
+
     </div>
   </section>
 </div>
