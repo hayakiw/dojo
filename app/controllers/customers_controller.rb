@@ -4,7 +4,12 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+
     @customers = Customer.page(params[:page])
+
+
+
+    logger.debug("========== Customer#index ==========");
   end
 
   # GET /customers/1
