@@ -5,11 +5,12 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
 
-    @customers = Customer.page(params[:page])
-
-
-
-    logger.debug("========== Customer#index ==========");
+    if params[:status] && params[:status] == '1'
+        @customers = Customer.page(params[:page])
+    else
+        @customers = Customer.where(status:1).page(params[:page])
+    end
+    @status = params[:status]
   end
 
   # GET /customers/1

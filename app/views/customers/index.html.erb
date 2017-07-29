@@ -25,7 +25,26 @@ $(document).ready(function() {
       },
     },
   });
-});     
+});
+
+$(document).ready(function() {
+  $('#check_status').on('click', function(){
+    var url = location.href;
+    var new_url = url.replace(/\?.*$/,"");
+    if ($(this).prop("checked")){
+      new_url += "?status=1";
+    }
+    location.href = new_url;
+  });
+});
+
+
+
+
+
+
+
+
 </script>
 
 
@@ -39,7 +58,7 @@ $(document).ready(function() {
       <div class="extra fl">
         <form class="form">
           <label class="display">
-            <input type="checkbox" />
+            <input type="checkbox" name="check" id="check_status" <%if @status=='1' %>checked="checked" <%end%>/>
             無効も表示</label>
         </form>
       </div>
@@ -76,3 +95,8 @@ $(document).ready(function() {
   </section>
   <!-- / section -->
 </div>
+
+<%= debug @status if Rails.env.development? %>
+
+
+
