@@ -19,6 +19,9 @@ $(function(){
     <div class="contents">
 
       <%= form_for(@customer) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+
         <div class="table fixed">
           <div class="row m_u10">
             <div class="col resp_m_u10">

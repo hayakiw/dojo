@@ -6,9 +6,9 @@ class CustomersController < ApplicationController
   def index
 
     if params[:status] && params[:status] == '1'
-        @customers = Customer.page(params[:page])
+        @customers = Customer.page(params[:page]).order("created_at DESC")
     else
-        @customers = Customer.where(status:1).page(params[:page])
+        @customers = Customer.where(status:1).page(params[:page]).order("created_at DESC")
     end
     @status = params[:status]
   end
@@ -32,9 +32,13 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+    logger.debug("===== Customer#create =======")
+    logger.debug(customer_params)
+
     @customer = Customer.new(customer_params)
     @customer.save
-    redirect_to customers_url
+    render 'new', layout: "modal"
+
 
     # respond_to do |format|
     #   if @customer.save
