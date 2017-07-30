@@ -1,10 +1,7 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
-  # GET /customers
-  # GET /customers.json
   def index
-
     if params[:status] && params[:status] == '1'
         @customers = Customer.page(params[:page]).order("created_at DESC")
     else
@@ -13,64 +10,52 @@ class CustomersController < ApplicationController
     @status = params[:status]
   end
 
-  # GET /customers/1
-  # GET /customers/1.json
   def show
   end
 
-  # GET /customers/new
   def new
     @customer = Customer.new
     render layout: "modal"
   end
 
-  # GET /customers/1/edit
   def edit
     render layout: "modal"
   end
 
-  # POST /customers
-  # POST /customers.json
   def create
+    # test
     logger.debug("===== Customer#create =======")
     logger.debug(customer_params)
 
     @customer = Customer.new(customer_params)
-    @customer.save
-    render 'new', layout: "modal"
 
-
-    # respond_to do |format|
-    #   if @customer.save
-    #     format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-    #     format.json { render :show, status: :created, location: @customer }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @customer.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @customer.save
+        format.html {render 'new', layout: "modal"}
+        format.js {render 'create_valid'}
+      else
+        format.html {render 'new', layout: "modal"}
+        format.js {render 'create_invalid'}
+      end
+    end
   end
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
   def update
-    @customer.update_attributes(customer_params)
-    redirect_to customers_url
+    # test
+    logger.debug("===== Customer#update =======")
+    logger.debug(customer_params)
 
-
-    # respond_to do |format|
-    #   if @customer.update(customer_params)
-    #     format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @customer }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @customer.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @customer.update_attributes(customer_params)
+        format.html {render 'edit', layout: "modal"}
+        format.js {render 'create_valid'}
+      else
+        format.html {render 'edit', layout: "modal"}
+        format.js {render 'create_invalid'}
+      end
+    end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
   def destroy
     @customer.destroy
     respond_to do |format|

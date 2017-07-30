@@ -18,9 +18,10 @@ $(function(){
     </div>
     <div class="contents">
 
-      <%= form_for(@customer) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-
+      <%= form_for(@customer, remote: true) do |f| %>
+        <div class="error_messages">
+          <%= render 'shared/error_messages', object: f.object %>
+        </div>
 
         <div class="table fixed">
           <div class="row m_u10">
