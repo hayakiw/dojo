@@ -58,10 +58,7 @@ class CustomersController < ApplicationController
 
   def destroy
     @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to customers_url
   end
 
   private
