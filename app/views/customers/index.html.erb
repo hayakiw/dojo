@@ -73,7 +73,7 @@ $(document).ready(function() {
               <% if customer.status %><td>有効</td><% else %><td>無効</td><% end %>
               <td><%= link_to 'Show', customer %></td>
               <td><%= link_to '編集', edit_customer_path(customer), class: "btn blue addition open"  %></td>
-              <td><%= link_to '削除', customer, class: "btn red open", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to '削除', customer, class: "btn red", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
