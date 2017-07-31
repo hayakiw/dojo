@@ -33,11 +33,11 @@ $(function(){
           <div class="row m_u10">
             <div class="td">
               <label for="valid" class="w100" >
-                <%= f.radio_button :status, "1" , id:"valid" %>
+                <%= f.radio_button :status, "1" , id:"valid", checked: f.object.status == true || f.object.status == nil %>
                 有効
               </label>
               <label for="invalid" class="w100" >
-                <%= f.radio_button :status, "0" , id:"invalid"%>
+                <%= f.radio_button :status, "0" , id:"invalid", checked: f.object.status == false  %>
                 無効
               </label>
             </div>
