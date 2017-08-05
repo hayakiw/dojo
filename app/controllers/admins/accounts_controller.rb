@@ -3,10 +3,12 @@ class Admins::AccountsController < Admins::ApplicationController
 
   def index
     @accounts = Account.all
+    render layout: 'application'
   end
 
   def new
     @account = Account.new
+    render layout: 'modal'
   end
 
   def create
@@ -24,6 +26,7 @@ class Admins::AccountsController < Admins::ApplicationController
   # end
 
   def edit
+    render layout: 'modal'
   end
 
   def update
@@ -35,6 +38,11 @@ class Admins::AccountsController < Admins::ApplicationController
   end
 
   def destroy
+    @account.destroy
+    respond_to do |format|
+      format.html { redirect_to admins_accounts_path, notice: 'Account was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private

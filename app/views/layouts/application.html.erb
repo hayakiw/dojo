@@ -13,39 +13,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body class ="list">
-    <a id="top"></a>
-    <header>
-      <div class="inner clearfix">
-        <div class="logo fl"><a href="#"><%= image_tag("logo.png", alt: "eBase Solutions Laboratory, Inc") %></a></div>
-        <div class="fr">
-          <div class="menuButton">
-            <div class="menu-trigger">
-              <div class="clearfix">
-                <div class="label"></div>
-                <!-- / .MENU -->
-                <div class="hamburger"><span></span> <span></span> <span></span></div>
-                <!-- / .hamburger -->
-              </div>
-              <!-- / .clearfix -->
-            </div>
-            <!-- / .menu-triger -->
-          </div>
-          <!-- / .menuButton -->
-          <ul class="nav">
-            <li><a href="work_experience.html">作業実績</a></li>
-            <li><a href="password.html">パスワード変更</a></li>
-            <li><a href="client_list.html">顧客管理</a></li>
-            <li><a href="user_list.html">ユーザー管理</a></li>
-            <li><a href="login.html">ログアウト</a></li>
-          </ul>
-          <!-- / .nav -->
-        </div>
-        <!-- / .fr -->
-      </div>
-      <!-- / .inner -->
-    </header>
 
 
 <!-- <link rel="stylesheet" href="css/reset.css" type="text/css" >
@@ -55,6 +22,31 @@
 <link rel="stylesheet" href="css/jquery-ui.css" type="text/css" >
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script> -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$("a.open").fancybox({
+		'width'				: '70%',
+		'height'			: '70%',
+		// 'minWidth'		: 1000,
+		'minHeight'			: 400,
+		'scrolling'			: 'yes',
+		'autoScale'			: false,
+		/* 'transitionIn'	: 'none',
+		'transitionOut'		: 'none',*/
+		'closeEffect'		: 'none',
+		'hideOnOverlayClick': true,
+		'hideOnContentClick': false,
+		'type'				: 'iframe',
+		helpers: {
+			overlay: {
+				speedIn: 0,
+				speedOut: 0.01,
+				closeClick: true
+			},
+		},
+	});
+});
+</script>
 </head>
 <body>
 <a id="top"></a>

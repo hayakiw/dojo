@@ -1,6 +1,3 @@
-<h1>Accounts#index</h1>
-
-
   <section class="list">
     <div class="sectionHeader clearfix">
       <div class="title fl">
@@ -25,8 +22,8 @@
           <td><%= account.name %></td>
           <td><%= account.email %></td>
           <td><%= account.rolename %></td>
-          <td><%= link_to edit_admins_account_path(account), class: "btn blue addition open" do %><span class="icon-edit"></span> 編集<% end %><a href="user_edit.html" class="btn blue addition open"></a></td>
-          <td><a href="user_delete.html" class="btn red open"><span class="icon-delete"></span> 削除</a></td>
+          <td><%= link_to edit_admins_account_path(account), class: "btn blue addition open" do %><span class="icon-edit"></span> 編集<% end %></td>
+          <td><%= link_to "削除", admins_account_path(account), method: 'delete', class: "btn red" %></td>
         </tr>
         <% end %>
       </table>
