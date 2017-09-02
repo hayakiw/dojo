@@ -1,4 +1,5 @@
 class Admins::AccountsController < Admins::ApplicationController
+  before_action :logged_in_account
   before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
@@ -55,7 +56,6 @@ class Admins::AccountsController < Admins::ApplicationController
   end
 
   private
-
     def set_user
       @account = Account.find(params[:id])
     end
