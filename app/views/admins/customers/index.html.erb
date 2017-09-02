@@ -1,51 +1,9 @@
-
-<p id="notice"><%= notice %></p>
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-  $("a.open").fancybox({
-    'width'       : '70%',
-    'height'      : '70%',
-    // 'minWidth'   : 1000,
-    'minHeight'     : 400,
-    'scrolling'     : 'yes', 
-    'autoScale'     : false,
-    /* 'transitionIn' : 'none',
-    'transitionOut'   : 'none',*/
-    'closeEffect'   : 'none',
-    'hideOnOverlayClick': true,
-    'hideOnContentClick': false,
-    'type'        : 'iframe',
-    helpers: {
-      overlay: {
-        speedIn: 0,
-        speedOut: 0.01,
-        closeClick: true
-      },
-    },
-  });
-});
-
-$(document).ready(function() {
-  $('#check_status').on('click', function(){
-    var url = location.href;
-    var new_url = url.replace(/\?.*$/,"");
-    if ($(this).prop("checked")){
-      new_url += "?status=1";
-    }
-    location.href = new_url;
-  });
-});
-</script>
-
-<div class="wrapper">
   <section class="list">
     <div class="sectionHeader clearfix">
       <div class="title fl">
         <h1>顧客一覧</h1>
       </div>
-      <div class="extra fl"><%= link_to '新規顧客追加', new_customer_path ,class: "btn addition open"  %></div>
+      <div class="extra fl"><%= link_to '新規顧客追加', new_admins_customer_path ,class: "btn addition open"  %></div>
       <div class="extra fl">
         <form class="form">
           <label class="display">
@@ -71,23 +29,16 @@ $(document).ready(function() {
             <tr>
               <td><%= customer.name %></td>
               <% if customer.status %><td>有効</td><% else %><td>無効</td><% end %>
-              <td><%= link_to 'Show', customer %></td>
-              <td><%= link_to '編集', edit_customer_path(customer), class: "btn blue addition open"  %></td>
-              <td><%= link_to '削除', customer, class: "btn red", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Show' %></td>
+              <td><%= link_to '編集', edit_admins_customer_path(customer), class: "btn blue addition open"  %></td>
+              <td><%= link_to '削除', admins_customer_path(customer), class: "btn red", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
       <%= paginate @customers %>
-
     </div>
-    <!-- / .contents.list -->
   </section>
-  <!-- / section -->
-</div>
-
-<%= debug @status if Rails.env.development? %>
 
 
 

@@ -18,7 +18,7 @@ $(function(){
     </div>
     <div class="contents">
 
-      <%= form_for(@customer, remote: true) do |f| %>
+      <%= form_for([:admins, @customer], remote: true) do |f| %>
         <div class="error_messages">
           <%= render 'shared/error_messages', object: f.object %>
         </div>

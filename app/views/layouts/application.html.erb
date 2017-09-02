@@ -24,27 +24,38 @@
 <script type="text/javascript" src="js/script.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function() {
-	$("a.open").fancybox({
-		'width'				: '70%',
-		'height'			: '70%',
-		// 'minWidth'		: 1000,
-		'minHeight'			: 400,
-		'scrolling'			: 'yes',
-		'autoScale'			: false,
-		/* 'transitionIn'	: 'none',
-		'transitionOut'		: 'none',*/
-		'closeEffect'		: 'none',
-		'hideOnOverlayClick': true,
-		'hideOnContentClick': false,
-		'type'				: 'iframe',
-		helpers: {
-			overlay: {
-				speedIn: 0,
-				speedOut: 0.01,
-				closeClick: true
-			},
-		},
-	});
+  $("a.open").fancybox({
+    'width'       : '70%',
+    'height'      : '70%',
+    // 'minWidth'   : 1000,
+    'minHeight'     : 400,
+    'scrolling'     : 'yes', 
+    'autoScale'     : false,
+    /* 'transitionIn' : 'none',
+    'transitionOut'   : 'none',*/
+    'closeEffect'   : 'none',
+    'hideOnOverlayClick': true,
+    'hideOnContentClick': false,
+    'type'        : 'iframe',
+    helpers: {
+      overlay: {
+        speedIn: 0,
+        speedOut: 0.01,
+        closeClick: true
+      },
+    },
+  });
+});
+
+$(document).ready(function() {
+  $('#check_status').on('click', function(){
+    var url = location.href;
+    var new_url = url.replace(/\?.*$/,"");
+    if ($(this).prop("checked")){
+      new_url += "?status=1";
+    }
+    location.href = new_url;
+  });
 });
 </script>
 </head>
@@ -76,7 +87,7 @@ $(document).ready(function() {
           <li><%= link_to 'プロフィール変更', edit_account_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_account_session_path, method: :delete %></li>
         <% else %>
-          <%= link_to 'ログイン', new_account_session_path %>
+          <li><%= link_to 'ログイン', new_account_session_path %></li>
         <% end %>
       </ul>
       <!-- / .nav -->
@@ -93,5 +104,4 @@ $(document).ready(function() {
 </div>
 <!-- / .wrapper -->
 </body>
->>>>>>> genkim-account
 </html>

@@ -8,6 +8,7 @@ class Admins::CustomersController < Admins::ApplicationController
         @customers = Customer.where(status:1).page(params[:page]).order("created_at DESC")
     end
     @status = params[:status]
+    render layout: 'application'
   end
 
   def show
@@ -58,7 +59,7 @@ class Admins::CustomersController < Admins::ApplicationController
 
   def destroy
     @customer.destroy
-    redirect_to customers_url
+    redirect_to admins_customers_url
   end
 
   private
