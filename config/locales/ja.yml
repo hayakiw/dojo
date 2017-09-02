@@ -9,9 +9,14 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       customer: 顧客
+      account: アカウント
     attributes:
       customer:
         name: 顧客名
+      account:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
   date:
     abbr_day_names:
     - 日

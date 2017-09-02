@@ -13,11 +13,14 @@ class Admins::AccountsController < Admins::ApplicationController
 
   def create
     @account = Account.new(user_params)
-    if @account.save
-      redirect_to admins_accounts_path
-    else
-      # todo error alert
-      render 'new'
+    respond_to do |format|
+      if @account.save
+        format.html {render 'new', layout: "modal"}
+        format.js {render 'create_valid'}
+      else
+        format.html {render 'new', layout: "modal"}
+        format.js {render 'create_invalid'}
+      end
     end
   end
 
@@ -30,11 +33,17 @@ class Admins::AccountsController < Admins::ApplicationController
   end
 
   def update
-    if @account.update(user_params)
-      redirect_to admins_accounts_path
-    else
-      render 'edit'
+    respond_to do |format|
+      if @account.update_attributes(user_params)
+        format.html {render 'edit', layout: "modal"}
+        format.js {render 'create_valid'}
+      else
+        format.html {render 'edit', layout: "modal"}
+        format.js {render 'create_invalid'}
+      end
     end
+
+
   end
 
   def destroy

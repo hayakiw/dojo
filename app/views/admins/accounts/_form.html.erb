@@ -1,13 +1,16 @@
-
-
+<div class="sectionHeader clearfix">
+  <div class="title fl">
+    <h1><%= title %></h1>
+  </div>
+</div>
 
 <div class="contents">
-
-  <%= form_for [:admins, @account], :html => {class: 'form'} do |f| %>
+  <%= form_for [:admins, @account], remote: true do |f| %>
     <div class="table fixed">
-<% f.object.errors.full_messages.each do |mess| %>
-<%= mess %>
-<% end %>
+        <div class="error_messages">
+          <%= render 'shared/error_messages', object: f.object %>
+        </div>
+
         <div class="row m_u20">
           <div class="col resp_m_u10">
             <div class="th">名前 <span class="label alert">必須</span></div>
@@ -66,8 +69,8 @@
     </div>
     <!-- / .table fixed -->
     <div class="btns tc">
-      <button class="btn blue w30 center" type="submit">登録</button>
-      <%= link_to "閉じる", admins_accounts_path, class: "btn default w30 center", target: '_parent' %></div>
+      <%= f.submit '登録', class:"btn blue w30 center"%>
+      <input type="button" class="btn default w30 center close-btn" value="閉じる">
 
   <% end %>
 </div>

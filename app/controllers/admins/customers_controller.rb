@@ -63,6 +63,11 @@ class Admins::CustomersController < Admins::ApplicationController
   end
 
   private
+
+    def get_url
+      admins_customers_url
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.find(params[:id])
