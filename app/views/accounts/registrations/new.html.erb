@@ -1,7 +1,12 @@
-<h2>Sign up</h2>
+<h2>登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -21,9 +26,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :role, '権限' %>
+      <%= f.radio_button :role, :trial %><%= f.label :role_trial, '試用期間' %>
+      <%= f.radio_button :role, :employee %><%= f.label :role_employee, '正社員' %>
+      <%= f.radio_button :role, :administrator %><%= f.label :role_administrator, '管理者' %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録" %>
   </div>
 <% end %>
-
-<%= render "accounts/shared/links" %>
