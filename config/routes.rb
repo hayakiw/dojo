@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     resources :customers, except: [:show]
     resources :accounts, except: [:show]
   end
+
+  resources :customer_projects, except: [:show]
 end
