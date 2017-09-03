@@ -1,0 +1,2 @@
+class CustomerProject < ApplicationRecord
+end
