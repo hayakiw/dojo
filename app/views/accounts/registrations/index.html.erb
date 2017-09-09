@@ -1,0 +1,39 @@
+  <section class="list">
+    <div class="sectionHeader clearfix">
+      <div class="title fl">
+        <h1>ユーザー一覧</h1>
+      </div>
+      <!-- / .title -->
+      <div class="extra fl"><%= link_to "新規ユーザー追加", accounts_new_path, class: "btn addition open" %></div>
+    </div>
+    <!-- / .sectionHeader -->
+    <div class="contents list">
+      <table class="deco-tb fs4">
+        <tr>
+          <th class="w35">名前</th>
+          <th class="w20">メールアドレス</th>
+          <th class="w20">権限</th>
+          <th class="w10">編集</th>
+          <th class="w10">削除</th>
+        </tr>
+        <% @accounts.each do |account| %>
+        <tr>
+          <td><%= account.name %></td>
+          <td><%= account.email %></td>
+          <% if account.role == 'employee' %>
+          <td>正社員</td>
+          <% elsif account.role == 'administrator' %>
+          <td>管理者</td>
+          <% else %>
+          <td>試用期間</td>
+          <% end %>
+          <td><%= link_to edit_account_registration_path(account), class: "btn blue addition open" do %><span class="icon-edit"></span> 編集<% end %></td>
+          <td><a href="user_delete.html" class="btn red open"><span class="icon-delete"></span> 削除</a></td>
+        </tr>
+        <% end %>
+      </table>
+      <!-- / .deco-tb -->
+    </div>
+    <!-- / .contents.list -->
+  </section>
+  <!-- / section -->

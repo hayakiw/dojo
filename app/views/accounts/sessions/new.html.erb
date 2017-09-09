@@ -1,26 +1,63 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <section>
+    <div class="sectionHeader clearfix">
+      <div class="title fl">
+        <h1>ログイン</h1>
+      </div>
+      <!-- / .title -->
     </div>
-  <% end -%>
+    <!-- / .sectionHeader -->
+    <div class="contents">
+      <!-- <form class="form"> -->
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="table fixed">
+          <div class="row">
+            <div class="th"><%= f.label :email, 'メールアドレス' %></div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "accounts/shared/links" %>
+          </div>
+          <div class="row m_u10">
+            <div class="col resp_m_u10">
+              <div class="td">
+                <!-- <input value="" name="input" placeholder="example@ebase-sl.jp" class="w100" type="text"> -->
+                <%= f.email_field :email, autofocus: true, class: 'w100' %>
+              </div>
+            </div>
+            <!-- / .col -->
+          </div>
+          <div class="row">
+            <div class="th">
+              <%= f.label :password, 'パスワード' %></div>
+          </div>
+          <div class="row m_u20">
+            <div class="col resp_m_u10">
+              <div class="td">
+                <!-- <input value="" name="input" placeholder="" class="w100" type="text"> -->
+                <%= f.password_field :password, autocomplete: "off", class: 'w100' %>
+              </div>
+            </div>
+            <!-- / .col -->
+          </div>
+          <div class="row m_u10">
+            <div class="col resp_m_u10">
+              <div class="td">
+                <% if devise_mapping.rememberable? -%>
+                <label>
+                  <!-- <input type="checkbox"> -->
+                  <%= f.check_box :remember_me %>
+                  ログイン状態を維持する </label>
+                <% end -%>
+              </div>
+            </div>
+            <!-- / .col -->
+          </div>
+          <!-- / .row -->
+        </div>
+        <!-- / .table fixed -->
+        <!-- <button class="btn blue w50 center ptb" type="button" onclick="location.href='home.html'">ログイン</button> -->
+        <%= f.submit "ログイン", class: 'btn blue w50 center ptb' %>
+        <!-- / .btn -->
+      <% end %>
+      <!-- </form> -->
+    </div>
+    <!-- / .contens -->
+  </section>
+  <!-- / section -->

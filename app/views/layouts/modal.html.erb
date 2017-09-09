@@ -12,6 +12,13 @@
 <%= csrf_meta_tags %>
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<script type="text/javascript">
+$(function(){
+  $('.close-btn').on('click', function(){
+    parent.$.fancybox.close();
+  });
+});
+</script>
 </head>
 <body>
 <%= yield %>

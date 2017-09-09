@@ -1,0 +1,51 @@
+<a id="top"></a>
+<div class="wrapper">
+  <section>
+    <div class="sectionHeader clearfix">
+      <div class="title fl">
+        <h1><%= title %></h1>
+      </div>
+    </div>
+    <div class="contents">
+
+      <%= form_for([:admins, @customer], remote: true) do |f| %>
+        <div class="error_messages">
+          <%= render 'shared/error_messages', object: f.object %>
+        </div>
+
+        <div class="table fixed">
+          <div class="row m_u10">
+            <div class="col resp_m_u10">
+              <div class="th">顧客名 <span class="label alert">必須</span></div>
+                <%= f.text_field :name, class: "w100", id: "client"%>
+            </div>
+         </div>
+          <div class="row m_u10">
+            <div class="td">
+              <label for="valid" class="w100" >
+                <%= f.radio_button :status, "1" , id:"valid", checked: f.object.status == true || f.object.status == nil %>
+                有効
+              </label>
+              <label for="invalid" class="w100" >
+                <%= f.radio_button :status, "0" , id:"invalid", checked: f.object.status == false  %>
+                無効
+              </label>
+            </div>
+          </div>
+        </div>
+          <div class="btns tc">
+            <%= f.submit '登録', class:"btn blue w30 center"%>
+            <input type="button" class="btn default w30 center close-btn" value="閉じる">
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
