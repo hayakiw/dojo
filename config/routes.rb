@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   namespace :admins do
-    resources :customers, except: [:show]
     resources :accounts, except: [:show]
   end
 
-  resources :customer_projects, except: [:show]
+  resources :customers, except: [:show] do
+    resources :customer_projects, except: [:show]
+  end
 end
