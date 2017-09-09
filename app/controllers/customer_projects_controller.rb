@@ -5,11 +5,6 @@ class CustomerProjectsController < ApplicationController
     @customer_projects = CustomerProject.all
   end
 
-  # GET /customer_projects/1
-  # GET /customer_projects/1.json
-  def show
-  end
-
   # GET /customer_projects/new
   def new
     @customer_project = CustomerProject.new
