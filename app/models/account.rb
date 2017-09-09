@@ -7,6 +7,9 @@ class Account < ApplicationRecord
   validates :name, presence: true
   validates :role, presence: true
 
+  has_many :working_report_times
+  has_many :Working_report_days
+
   def rolename
     case role
     when 'administrator'

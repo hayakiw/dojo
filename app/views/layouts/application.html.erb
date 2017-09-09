@@ -82,7 +82,7 @@ $(document).ready(function() {
         <% if account_signed_in? %>
           <li><a href="work_experience.html">作業実績</a></li>
           <li><a href="password.html">パスワード変更</a></li>
-          <li><%= link_to "顧客管理", admins_customers_path %></li>
+          <li><%= link_to "顧客管理", customers_path %></li>
           <li><%= link_to "ユーザー管理", admins_accounts_path %></li>
           <li><%= link_to 'プロフィール変更', edit_account_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_account_session_path, method: :delete %></li>
