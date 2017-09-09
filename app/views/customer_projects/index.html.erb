@@ -1,0 +1,34 @@
+
+<section class="list">
+  <div class="sectionHeader clearfix">
+    <div class="title fl">
+      <h1>ユーザー一覧</h1>
+    </div>
+    <!-- / .title -->
+    <div class="extra fl"><%= link_to "新規プロジェクト追加", new_customer_project_path, class: "btn addition open" %></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @customer_projects.each do |customer_project| %>
+        <tr>
+          <td><%= customer_project.name %></td>
+          <td><%= link_to 'Show', customer_project %></td>
+          <td><%= link_to 'Edit', edit_customer_project_path(customer_project) %></td>
+          <td><%= link_to 'Destroy', customer_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</section>
+
+
+
+
