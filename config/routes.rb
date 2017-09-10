@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :customers, except: [:show] do
+    resources :customer_projects, only: [:show]
+  end
+
+  namespace :customers do
     resources :customer_projects, except: [:show]
   end
 end
