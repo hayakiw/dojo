@@ -2,7 +2,7 @@ class CustomerProjectsController < ApplicationController
   before_action :set_customer_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customer_projects = CustomerProject.all
+    @customer_projects = CustomerProject.where(customer_id: params[:customer_id])
   end
 
   # GET /customer_projects/new
