@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     resources :accounts, except: [:show]
   end
 
-  resources :customers, except: [:show] do
-    resources :customer_projects, only: [:show]
-  end
-
-  namespace :customers do
+  resources :customers, except: [:show], shallow: true do
     resources :customer_projects, except: [:show]
   end
+
+  # namespace :customers do
+  #   resources :customer_projects, except: [:show, :index]
+  # end
 end
