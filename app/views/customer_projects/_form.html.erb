@@ -7,8 +7,7 @@
       </div>
     </div>
     <div class="contents">
-
-      <%= form_for( @customer_project, remote: true) do |f| %>
+      <%= form_for( form_for_arg_if_shallow(@customer, @customer_project), remote: true) do |f| %>
         <div class="error_messages">
           <%= render 'shared/error_messages', object: f.object %>
         </div>
