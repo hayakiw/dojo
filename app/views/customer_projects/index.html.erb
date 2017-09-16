@@ -2,10 +2,10 @@
 
 <script>
 $( function() {
-  $("#sortableProject").sortable({
+  $(".sortableProject").sortable({
     handle: 'div.head',
   });
-  $("#sortableProject").disableSelection({
+  $(".sortableProject").disableSelection({
     handle: 'div.head',
   }); 
   $(".sortable").sortable({
@@ -25,9 +25,9 @@ $( function() {
 
 
     <div class="scroll">
-      <div class="projectWrap" id="sortableProject">
+      <div class="projectWrap sortableProject">
         <% @customer_projects.each  do |customer_project| %>
-          <div class="projectOuter">
+          <div class="projectOuter ">
             <div class="project">
               <div class="head"><a href="#" class="open"><span class="icon-move"></span>
                 <div class="name"><%= customer_project.name %></div>
