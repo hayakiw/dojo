@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   end
 
   resources :customers, except: [:show], shallow: true do
-    resources :customer_projects, except: [:show]
+    resources :customer_projects, except: [:show], shallow: true do
+      resources :customer_project_works, only:[:new, :edit, :update, :create]
+    end
   end
+
+
 
   # namespace :customers do
   #   resources :customer_projects, except: [:show, :index]

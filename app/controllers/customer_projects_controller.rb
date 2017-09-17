@@ -1,5 +1,6 @@
 class CustomerProjectsController < ApplicationController
   before_action :set_customer_project, only: [:edit, :update, :destroy]
+  before_action :set_customer, only: [:new, :create]
 
   def index
     @customer_projects = CustomerProject.where(customer_id: params[:customer_id])
@@ -7,7 +8,6 @@ class CustomerProjectsController < ApplicationController
 
   # GET /customer_projects/new
   def new
-    @customer = Customer.find(params[:customer_id])
     @customer_project = @customer.customer_projects.build
     render layout: "modal"
   end
@@ -22,8 +22,7 @@ class CustomerProjectsController < ApplicationController
   # POST /customer_projects.json
   def create
     @customer_project = CustomerProject.new(customer_project_params)
-    @customer_project.customer_id = params[:customer_id]
-    @customer = @customer_project.customer
+    @customer_project.customer_id = @customer.id
     respond_to do |format|
       if @customer_project.save
         format.html {render 'new', layout: "modal"}
@@ -64,6 +63,10 @@ class CustomerProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_customer_project
       @customer_project = CustomerProject.find(params[:id])
+    end
+
+    def set_customer
+      @customer = Customer.find(params[:customer_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

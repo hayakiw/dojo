@@ -1,0 +1,52 @@
+<a id="top"></a>
+<div class="wrapper">
+  <section>
+    <div class="sectionHeader clearfix">
+      <div class="title fl">
+        <h1><%= title %></h1>
+      </div>
+      <!-- / .title -->
+    </div>
+    <!-- / .sectionHeader -->
+    <div class="contents">
+      <%= form_for( form_for_arg_if_shallow(@customer_project, @customer_project_work), remote: true) do |f| %>
+        <div class="error_messages">
+          <%= render 'shared/error_messages', object: f.object %>
+        </div>
+
+        <div class="table fixed">
+          <div class="row m_u10">
+            <div class="col resp_m_u10">
+              <div class="th">作業名 <span class="label alert">必須</span></div>
+              <div class="td">
+                <%= f.text_field :name, class: "w100", id: "work"%>
+              </div>
+            </div>
+            <!-- / .col -->
+          </div>
+          <!-- / .row -->
+          <div class="row m_u10">
+            <div class="col resp_m_u10">
+              <div class="th">単価 <span class="label alert">必須</span></div>
+              <div class="td">
+                <%= f.text_field :price, class: "w20", id: "work"%>
+                円 </div>
+            </div>
+            <!-- / .col -->
+          </div>
+          <!-- / .row -->
+        </div>
+        <!-- / .table fixed -->
+        <div class="btns tc">
+          <div class="btns tc">
+            <%= f.submit '登録', class:"btn blue w30 center"%>
+            <input type="button" class="btn default w30 center close-btn" value="閉じる">
+          </div>
+      <% end %>
+      <!-- / .form -->
+    </div>
+    <!-- / .contents -->
+  </section>
+  <!-- / section -->
+</div>
+<!-- / .wrapper -->

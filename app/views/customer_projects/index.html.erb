@@ -35,14 +35,14 @@ $( function() {
             </a></div>
             <!-- / .head -->
             <ul class="sortable">
-              <% customer_project.customer_project_works.each do |work|  %>
-                <li><a href="#" class="open">
-                  <div class="work"><%= work.name %></div>
-                  <div class="price">&yen; <%= work.price %></div>
+              <% customer_project.customer_project_works.each do |project_work|  %>
+                <li><a href="<%= edit_customer_project_work_path(project_work) %>" class="open">
+                  <div class="work"><%= project_work.name %></div>
+                  <div class="price">&yen; <%= project_work.price %></div>
                 </a></li>
               <% end %>
             </ul>
-            <div class="bottom"> <a href="#" class="open"><span class="icon-plus"></span> プロジェクトに追加</a></div>
+            <div class="bottom"> <a href="<%= new_customer_project_customer_project_work_path(customer_project) %>" class="open"><span class="icon-plus"></span> プロジェクトに追加</a></div>
             <!-- / .bottom -->
           </div>
           <!-- / .project -->
