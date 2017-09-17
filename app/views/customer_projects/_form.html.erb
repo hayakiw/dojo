@@ -7,8 +7,7 @@
       </div>
     </div>
     <div class="contents">
-
-      <%= form_for( @customer_project, remote: true) do |f| %>
+      <%= form_for( form_for_arg_if_shallow(@customer, @customer_project), remote: true) do |f| %>
         <div class="error_messages">
           <%= render 'shared/error_messages', object: f.object %>
         </div>
@@ -22,12 +21,13 @@
          </div>
           <div class="row m_u10">
             <div class="td">
+              <div class="th">作業タイプ<span class="label alert">必須</span></div>
               <label for="valid" class="w100" >
-                <%= f.radio_button :work_type, "1" , id:"valid"%>
+                <%= f.radio_button :work_type, CustomerProject::WORK_TYPE_MAINTENANCE , id:"valid"%>
                 保守
               </label>
               <label for="invalid" class="w100" >
-                <%= f.radio_button :work_type, "0" , id:"invalid"%>
+                <%= f.radio_button :work_type, CustomerProject::WORK_TYPE_NEW , id:"invalid"%>
                 新規
               </label>
             </div>

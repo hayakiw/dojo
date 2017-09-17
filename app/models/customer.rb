@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
-    validates :name,    presence: true
+    has_many :customer_projects
+    has_many :customer_project_works
 
-    # validates :name,    presence: {message: "顧客名を入力してください"}
-    # validates :status,  presence: {message: "有効または無効をチェックしてください"}
+    validates :name,    presence: true
 end

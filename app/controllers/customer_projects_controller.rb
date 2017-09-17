@@ -1,23 +1,20 @@
 class CustomerProjectsController < ApplicationController
-  before_action :set_customer_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer_project, only: [:edit, :update, :destroy]
+  before_action :set_customer, only: [:new, :create]
 
   def index
-    @customer_projects = CustomerProject.all
-  end
-
-  # GET /customer_projects/1
-  # GET /customer_projects/1.json
-  def show
+    @customer_projects = CustomerProject.where(customer_id: params[:customer_id])
   end
 
   # GET /customer_projects/new
   def new
-    @customer_project = CustomerProject.new
+    @customer_project = @customer.customer_projects.build
     render layout: "modal"
   end
 
   # GET /customer_projects/1/edit
   def edit
+    @customer = @customer_project.customer
     render layout: "modal"
   end
 
@@ -25,7 +22,7 @@ class CustomerProjectsController < ApplicationController
   # POST /customer_projects.json
   def create
     @customer_project = CustomerProject.new(customer_project_params)
-
+    @customer_project.customer_id = @customer.id
     respond_to do |format|
       if @customer_project.save
         format.html {render 'new', layout: "modal"}
@@ -40,6 +37,7 @@ class CustomerProjectsController < ApplicationController
   # PATCH/PUT /customer_projects/1
   # PATCH/PUT /customer_projects/1.json
   def update
+    @customer = @customer_project.customer
     respond_to do |format|
       if @customer_project.update(customer_project_params)
         format.html {render 'edit', layout: "modal"}
@@ -65,6 +63,10 @@ class CustomerProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_customer_project
       @customer_project = CustomerProject.find(params[:id])
+    end
+
+    def set_customer
+      @customer = Customer.find(params[:customer_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

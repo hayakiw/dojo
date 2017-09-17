@@ -1,32 +1,58 @@
+<% provide(:body_class, 'edit') %>
 
-<section class="list">
+<script>
+$( function() {
+  $(".sortableProject").sortable({
+    handle: 'div.head',
+  });
+  $(".sortableProject").disableSelection({
+    handle: 'div.head',
+  }); 
+  $(".sortable").sortable({
+  });
+  $(".sortable").disableSelection({
+  }); 
+} );
+</script>
+<section class="edit">
   <div class="sectionHeader clearfix">
     <div class="title fl">
-      <h1>ユーザー一覧</h1>
+      <h1>顧客管理</h1>
     </div>
     <!-- / .title -->
-    <div class="extra fl"><%= link_to "新規プロジェクト追加", new_customer_project_path, class: "btn addition open" %></div>
+    <div class="extra fl"><%= link_to "新規プロジェクト追加", new_customer_customer_project_path, class: "btn addition open" %></div>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @customer_projects.each do |customer_project| %>
-        <tr>
-          <td><%= customer_project.name %></td>
-          <td><%= link_to 'Show', customer_project %></td>
-          <td><%= link_to 'Edit', edit_customer_project_path(customer_project) %></td>
-          <td><%= link_to 'Destroy', customer_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+  <div class="scroll">
+    <div class="projectWrap sortableProject">
+      <% @customer_projects.each  do |customer_project| %>
+        <div class="projectOuter ">
+          <div class="project">
+            <div class="head"><a href="<%= edit_customer_project_path(customer_project) %>" class="open"><span class="icon-move"></span>
+              <div class="name"><%= customer_project.name %></div>
+              <span class="icon-edit"></span>
+              <!-- / .icon-edit -->
+            </a></div>
+            <!-- / .head -->
+            <ul class="sortable">
+              <% customer_project.customer_project_works.each do |project_work|  %>
+                <li><a href="<%= edit_customer_project_work_path(project_work) %>" class="open">
+                  <div class="work"><%= project_work.name %></div>
+                  <div class="price">&yen; <%= project_work.price %></div>
+                </a></li>
+              <% end %>
+            </ul>
+            <div class="bottom"> <a href="<%= new_customer_project_customer_project_work_path(customer_project) %>" class="open"><span class="icon-plus"></span> プロジェクトに追加</a></div>
+            <!-- / .bottom -->
+          </div>
+          <!-- / .project -->
+        </div>
+        <!-- / .projectOuter -->
       <% end %>
-    </tbody>
-  </table>
-
+    </div>
+    <!-- / .projectWrap -->
+  </div>
+  <!-- / .scroll -->
 </section>
 
 

@@ -1,4 +1,4 @@
-class Admins::CustomersController < Admins::ApplicationController
+class CustomersController < ApplicationController
   before_action :logged_in_account
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
@@ -60,7 +60,7 @@ class Admins::CustomersController < Admins::ApplicationController
 
   def destroy
     @customer.destroy
-    redirect_to admins_customers_url
+    redirect_to customers_url
   end
 
   private
