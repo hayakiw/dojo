@@ -4,6 +4,11 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ROLE_ADMIN = 'administrator'
+  ROLE_EMPLOYEE = 'employee'
+  ROLE_TRIAL = 'trial'
+
+
   validates :name, presence: true
   validates :role, presence: true
 
@@ -12,11 +17,11 @@ class Account < ApplicationRecord
 
   def rolename
     case role
-    when 'administrator'
+    when ROLE_ADMIN
       '管理者'
-    when 'employee'
+    when ROLE_EMPLOYEE
       '正社員'
-    when 'trial'
+    when ROLE_TRIAL
       '試用期間'
     end
   end

@@ -51,7 +51,7 @@
              <div class="selectWrap w100">
                <%= f.select(
                    :role,
-                     {'試用期間' => :trial, '正社員' => :employee, '管理者' => :administrator},
+                     {'試用期間' => Account::ROLE_TRIAL, '正社員' => Account::ROLE_EMPLOYEE, '管理者' => Account::ROLE_ADMIN},
                   #  { include_blank: "Please select one" },
                    { class: "form-control" }
                ) %>
