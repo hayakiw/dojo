@@ -31,7 +31,7 @@
             <tr>
               <td><%= customer.name %></td>
               <% if customer.status %><td>有効</td><% else %><td>無効</td><% end %>
-              <td><%= link_to 'show', customer_customer_projects_path(customer), class: "btn blue"  %></td>
+              <td><%= link_to customer.customer_projects.count, customer_customer_projects_path(customer) %></td>
               <td><%= link_to '編集', edit_customer_path(customer), class: "btn blue addition open"  %></td>
               <td><%= link_to '削除', customer_path(customer), class: "btn red", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
