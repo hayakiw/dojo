@@ -1,4 +1,5 @@
 class CustomerProjectWorksController < ApplicationController
+  before_action :logged_in_account
   before_action :set_customer_project_work, only: [:edit, :update, :destroy]
   before_action :set_customer_project, only: [:new, :create]
 
