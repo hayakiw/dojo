@@ -26,4 +26,7 @@ class Account < ApplicationRecord
     end
   end
 
+  def admin?
+    role == ROLE_ADMIN
+  end
 end

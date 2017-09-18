@@ -97,8 +97,10 @@ $(document).ready(function() {
   <!-- / .inner -->
 </header>
 <div class="wrapper">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% flash.each do |key, message| %>
+      <%= content_tag(:div, message, class: key) %>
+    <% end %>
+
     <%= yield %>
     <%= debug(params) if Rails.env.development? %>
 </div>

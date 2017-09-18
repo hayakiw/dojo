@@ -1,5 +1,6 @@
 class Admins::AccountsController < Admins::ApplicationController
   before_action :logged_in_account
+  before_action :logged_in_admin
   before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
@@ -25,10 +26,6 @@ class Admins::AccountsController < Admins::ApplicationController
     end
   end
 
-  # def show
-  #   #code
-  # end
-
   def edit
     render layout: 'modal'
   end
@@ -43,8 +40,6 @@ class Admins::AccountsController < Admins::ApplicationController
         format.js {render 'create_invalid'}
       end
     end
-
-
   end
 
   def destroy
