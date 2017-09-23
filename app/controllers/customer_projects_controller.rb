@@ -1,5 +1,5 @@
 class CustomerProjectsController < ApplicationController
-  before_action :logged_in_account
+  before_action :authenticate_account!
   before_action :set_customer_project, only: [:edit, :update, :destroy]
   before_action :set_customer, only: [:new, :create]
 

@@ -24,8 +24,8 @@
           <td><%= account.name %></td>
           <td><%= account.email %></td>
           <td><%= account.rolename %></td>
-          <td><%= link_to edit_admins_account_path(account), class: "btn blue addition open" do %><span class="icon-edit"></span>編集<% end %></td>
-          <td><%= link_to "削除", admins_account_path(account), method: 'delete', class: "btn red" %></td>
+          <td><%= link_to edit_admins_account_path(account), class: "btn blue addition open" do %><span class="icon-edit"></span> 編集<% end %></td>
+          <td><%= link_to admins_account_path(account), method: 'delete', class: "btn red" do %><span class="icon-delete"></span> 削除<% end %></td>
         </tr>
         <% end %>
       </table>

@@ -1,5 +1,5 @@
 class Admins::AccountsController < Admins::ApplicationController
-  before_action :logged_in_account
+  before_action :authenticate_account!
   before_action :logged_in_admin
   before_action :set_user, only: [:edit, :update, :destroy]
 
