@@ -7,11 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Customer.delete_all
+# Customer.delete_all
 
-1000.times do |i|
-	Customer.create!(
-		name: "test#{i}",
-		status: i % 2 == 0 ? true : false,
-	)
-end
+# 10.times do |i|
+# 	Customer.create!(
+# 		name: "test#{i}",
+# 		status: i % 2 == 0 ? true : false,
+# 	)
+
+Account.delete_all
+Account.create!(
+  name: "admin",
+  email: 'admin@example.com',
+  password: '123456789',
+  role: 'administrator',
+)

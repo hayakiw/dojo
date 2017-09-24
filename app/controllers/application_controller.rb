@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   private
     def logged_in_account
       unless account_signed_in?
+        flash[:notice] = 'ログインしてください'
         redirect_to  home_index_path
       end
     end
