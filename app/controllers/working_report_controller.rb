@@ -1,0 +1,2 @@
+class WorkingReportController < ApplicationController
+end
