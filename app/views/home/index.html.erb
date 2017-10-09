@@ -31,7 +31,7 @@
           <tr>
           <% (day..day.end_of_week(:sunday)).each do |d| %>
             <% if d.month != @today.month %>
-              <td class="other_month" ><%= d.day %></td>
+              <td></td>
             <% else %>
               <td><a href="#" class="<%= (d == @today) ? 'finished' : '' %>"><%= d.day %></a></td>
             <% end %>
