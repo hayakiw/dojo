@@ -10,11 +10,12 @@
     </div>
     <!-- / .sectionHeader -->
     <div class="contents">
-      <div class="date"><span class="year"><%= @today.year %></span>
+      <div class="date"><span class="year"><%= @calender_day.year %></span>
         <!-- / .year -->
-        <span>年</span> <span class="month"><%= @today.month%></span>
+        <span>年</span> <span class="month"><%= @calender_day.month%></span>
         <!-- / .month -->
         <span>月</span></div>
+
       <table class="deco-tb calendar">
         <tr>
           <td>SUN</td>
@@ -26,11 +27,11 @@
           <td>SAT</td>
         </tr>
 
-        <% day = @today.beginning_of_month.beginning_of_week(:sunday) %>
-        <% while day <= @today.end_of_month %>
+        <% day = @calender_day.beginning_of_month.beginning_of_week(:sunday) %>
+        <% while day <= @calender_day.end_of_month %>
           <tr>
           <% (day..day.end_of_week(:sunday)).each do |d| %>
-            <% if d.month != @today.month %>
+            <% if d.month != @calender_day.month %>
               <td></td>
             <% else %>
               <td><a href="#" class="<%= (d == @today) ? 'finished' : '' %>"><%= d.day %></a></td>
@@ -42,8 +43,8 @@
 
       </table>
       <ul class="pagination">
-        <li class="disabled"><a rel="prev" href="#" class="prev">«</a></li>
-        <li><a rel="next" href="#" class="next">»</a></li>
+        <li class="disabled"><%= link_to '«', home_index_path(year:@calender_day.prev_month.year, month: @calender_day.prev_month.month), rel:"prev", class: "prev" %></li>
+        <li><%= link_to '»', home_index_path(year:@calender_day.next_month.year, month: @calender_day.next_month.month), rel:"next", class: "next" %></li>
       </ul>
       <!-- <div class="deco-box">
       </div> -->
