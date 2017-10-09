@@ -441,6 +441,14 @@ section div.sectionHeader div.extra {
 	padding-top: 0.8em;
 }
 
+section div.sectionHeader div.extra.m_r1 {
+  margin-right: 1%;
+}
+
+section div.sectionHeader div.extra.m_r1 {
+	margin-right: 1%;
+}
+
 section div.sectionHeader div.extra.input {
 	padding-top: 0.3em;
 }
@@ -743,6 +751,35 @@ section.input_list {
 section.input_list table.deco-tb td {	
 }
 
+section.input_list .contents table {
+}
+
+section.input_list .contents table td {
+	padding: 0;
+	line-height: 1;
+}
+
+section.input_list .contents .form table select,
+section.input_list .contents .form table input,
+section.input_list .contents .form table textarea {	
+    border: none;
+	border-radius: 0;
+	padding: 0 0.5em;
+	line-height: 1;
+}
+
+section.input_list .contents .form table select,
+section.input_list .contents .form table div.selectWrap {
+	height: 2em;
+    min-width: inherit;
+}
+
+section.input_list .contents .form table input:focus,
+section.input_list .contents .form table select:focus {
+    box-shadow: none;
+}
+
+
 /* @end 入力一覧 */
 
 /* placeholder */
@@ -952,6 +989,18 @@ section.input_list table.deco-tb td {
 .contents.list table.deco-tb tr td:nth-of-type(4) {
 	text-align: center;
 }
+
+/* -------------------------------------------------------- ホーム */
+
+/* -------------------------------------------------------- section.home */
+
+section.home {
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+}
+
+/* @end ホーム */
 
 /* ------------------------------------------------------------------------------------------------------------------------------------ table.calendar */
 
