@@ -1,0 +1,179 @@
+  <section class="input_list">
+    <div class="sectionHeader clearfix">
+      <div class="title fl">
+        <h1>一覧</h1>
+      </div>
+      <!-- / .title -->
+      <div class="extra input fl">
+        <form id="form-1" class="form" action="<%= working_report_index_path %>">
+          <label>
+            <input name="date" class="date-select" id="datepicker"  type="text">
+          </label>
+        </form>
+      </div>
+
+      <!-- / .extra -->
+      <div id="form-1-submit" class="extra fl"><a  class="btn addition">表示</a></div>
+      <!-- / .extra -->
+    </div>
+    <!-- / .sectionHeader -->
+    <div class="contents">
+      <form class="form">
+        <table class="deco-tb fs3 m_u30">
+          <tr>
+            <th class="w10">開始</th>
+            <th class="w10">終了</th>
+            <th class="w10">休憩</th>
+            <th class="w20">顧客名</th>
+            <th class="w20">プロジェクト</th>
+            <th class="w10">作業内容</th>
+            <th class="w20">作業場所</th>
+          </tr>
+          <!-- <tr>
+            <td>10:00</td>
+            <td>13:00</td>
+            <td>01:00</td>
+            <td>A</td>
+            <td>B</td>
+            <td>保守</td>
+            <td>eBase Lab</td>
+          </tr> -->
+          <tr>
+            <td><input value="" name="start" placeholder="10:00" class="w100" type="text" readonly></td>
+            <td><input value="" name="end" placeholder="13:00" class="w100" type="text" readonly></td>
+            <td><input value="" name="break" placeholder="01:00" class="w100" type="text" readonly></td>
+            <td>
+              <select name="select" disabled="disabled">
+                <option value="A" selected="selected">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+           </td>
+            <td>
+              <select name="select" disabled="disabled">
+                <option value="A" selected="selected">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </td>
+            <td>
+              <select name="select" disabled="disabled">
+                <option value="保守" selected="selected">保守</option>
+                <option value="新規">新規</option>
+              </select>
+           </td>
+            <td>              <select name="select" disabled="disabled">
+                <option value="eBase Lab" selected="selected">eBase Lab</option>
+                <option value="other">other</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><input value="" name="start" placeholder="" class="w100" type="text"></td>
+            <td><input value="" name="end" placeholder="" class="w100" type="text"></td>
+            <td><input value="" name="break" placeholder="" class="w100" type="text"></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="A" selected="selected">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="A" selected="selected">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="保守" selected="selected">保守</option>
+                <option value="新規">新規</option>
+              </select>
+            </div></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="eBase Lab" selected="selected">eBase Lab</option>
+                <option value="other">other</option>
+              </select>
+            </div></td>
+          </tr>
+          <tr>
+            <td><input value="" name="start" placeholder="" class="w100" type="text"></td>
+            <td><input value="" name="end" placeholder="" class="w100" type="text"></td>
+            <td><input value="" name="break" placeholder="" class="w100" type="text"></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="A" selected="selected">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="A" selected="selected">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="保守" selected="selected">保守</option>
+                <option value="新規">新規</option>
+              </select>
+            </div></td>
+            <td><div class="selectWrap w100">
+              <select name="select">
+                <option value="eBase Lab" selected="selected">eBase Lab</option>
+                <option value="other">other</option>
+              </select>
+            </div></td>
+          </tr>
+        </table>          
+        <div class="clearfix">
+          <div class="fl w49 m_r2">
+            <h2>日報</h2>
+            <textarea name="report" placeholder="" class="w100"></textarea>
+          </div>
+          <!-- / .w49 -->
+          <div class="fl w49">
+            <h2>備考</h2>
+            <textarea name="remarks" placeholder="" class="w100"></textarea>
+          </div>
+          <!-- / .w49 -->
+        </div>
+        <!-- / .clearfix -->
+      </form>
+      <!-- / .form -->
+    </div>
+    <!-- / .contents -->
+  </section>
+  <!-- / section -->
+
+
+<script>
+  $(function() {
+    $("#datepicker").datepicker();
+    $("#datepicker").datepicker("option", "showOn", 'button');
+    $("#datepicker").datepicker("option", "buttonImageOnly", true);
+    $("#datepicker").datepicker("option", "buttonImage", 'img/icon-calendar.png');
+    $("#datepicker").datepicker("option", "dateFormat", 'yy-mm-dd');
+  });
+
+  $(function (){
+    $('#form-1-submit').on('click', function(){
+
+      console.log("============ test1 ");
+
+      $('#form-1').submit();
+    });
+  });
+
+</script>
