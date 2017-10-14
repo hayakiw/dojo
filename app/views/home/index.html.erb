@@ -27,18 +27,17 @@
           <td>SAT</td>
         </tr>
 
-        <% day = @calender_day.beginning_of_month.beginning_of_week(:sunday) %>
-        <% while day <= @calender_day.end_of_month %>
+        <% @month.each do |week| %>
           <tr>
-          <% (day..day.end_of_week(:sunday)).each do |d| %>
-            <% if d.month != @calender_day.month %>
-              <td></td>
-            <% else %>
-              <td><a href="#" class="<%= (d == @today) ? 'finished' : '' %>"><%= d.day %></a></td>
+            <% week.each do |day|%>
+              <td>
+                <a href="#" class="<%= (day == @today) ? 'finished' : '' %>"><%= day.day %></a>
+                <%  if holiday = HolidayJp.holiday?(day) %>
+                  <div class="holiday"><%= holiday.name %></div>
+                <% end %>
+              </td>
             <% end %>
-          <% end %>
           </tr>
-          <% day = day + 1.weeks %>
         <% end %>
 
       </table>

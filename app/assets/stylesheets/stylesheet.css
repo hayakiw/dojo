@@ -1067,6 +1067,11 @@ section.home {
 	color: #fff;
 }
 
+.contents table.deco-tb.calendar td div.holiday{
+  background: #f00;
+  color: #fff;
+}
+
 /* ------------------------------------------------------------------------------------------------------------------------------------ div display="table" */
 
 .contents div.table {
