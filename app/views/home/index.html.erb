@@ -1,3 +1,57 @@
-<% provide(:body_class, 'list')%>
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% provide(:body_class, '')%>
+
+<div class="wrapper">
+  <section class="home">
+    <div class="sectionHeader clearfix">
+      <div class="title fl">
+        <h1>ホーム</h1>
+      </div>
+      <!-- / .title -->
+    </div>
+    <!-- / .sectionHeader -->
+    <div class="contents">
+      <div class="date"><span class="year"><%= @calender_day.year %></span>
+        <!-- / .year -->
+        <span>年</span> <span class="month"><%= @calender_day.month%></span>
+        <!-- / .month -->
+        <span>月</span></div>
+
+      <table class="deco-tb calendar">
+        <tr>
+          <td>SUN</td>
+          <td>MON</td>
+          <td>TUE</td>
+          <td>WED</td>
+          <td>THU</td>
+          <td>FRI</td>
+          <td>SAT</td>
+        </tr>
+
+        <% @month.each do |week| %>
+          <tr>
+            <% week.each do |day|%>
+              <td>
+                <a href="#" class="<%= (day == @today) ? 'finished' : '' %>"><%= day.day %></a>
+                <%  if holiday = HolidayJp.holiday?(day) %>
+                  <div class="holiday"><%= holiday.name %></div>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+
+      </table>
+      <ul class="pagination">
+        <li class="disabled"><%= link_to '«', home_index_path(year:@calender_day.prev_month.year, month: @calender_day.prev_month.month), rel:"prev", class: "prev" %></li>
+        <li><%= link_to '»', home_index_path(year:@calender_day.next_month.year, month: @calender_day.next_month.month), rel:"next", class: "next" %></li>
+      </ul>
+      <!-- <div class="deco-box">
+      </div> -->
+      <!-- / .deco-box -->
+    </div>
+    <!-- / .contents -->
+  </section>
+  <!-- / section -->
+</div>
+<!-- / .wrapper -->
+</body>

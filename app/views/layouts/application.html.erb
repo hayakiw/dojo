@@ -80,7 +80,7 @@ $(document).ready(function() {
       <!-- / .menuButton -->
       <ul class="nav">
         <% if account_signed_in? %>
-          <li><a href="work_experience.html">作業実績</a></li>
+          <li><%= link_to "作業実績", working_report_index_path %></li>
           <!-- <li><a href="password.html">パスワード変更</a></li> -->
           <li><%= link_to "顧客管理", customers_path %></li>
           <% if current_account.admin? %>
