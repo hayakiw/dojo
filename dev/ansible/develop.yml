@@ -8,5 +8,5 @@
     - apt-upgrade
     - rbenv
     - mysql
-#    - nodejs
+    - nodejs
     - env
