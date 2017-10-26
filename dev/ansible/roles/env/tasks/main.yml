@@ -6,7 +6,7 @@
 
 - name: Install rails and bundler
   sudo_user: "{{ rbenv_user }}"
-  gem: name={{ item }} executable=~/.rbenv/shims/gem user_install=False
+  gem: name={{ item }} executable=/home/vagrant/.rbenv/shims/gem user_install=False
   with_items:
     - rails
     - bundler
