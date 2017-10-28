@@ -7,6 +7,7 @@ class WorkingReportTime < ApplicationRecord
     customers = Customer.where(status:1).order("name").pluck(:name, :id)
     customers.unshift(["選択してください", ""])
   end
+
   def project_opts
     projects = Array.new()
     if customer_project_id

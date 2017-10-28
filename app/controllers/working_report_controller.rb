@@ -1,6 +1,10 @@
 class WorkingReportController < ApplicationController
   def index
     @report_at = params[:report_at]
+    if @report_at.blank?
+      @report_at = Date.today.strftime('%Y-%m-%d')
+    end
+    @working_report_times = CustomerProjectWork.where(date: @report_at, account_id: current_account.id.to_i)
   end
 
   def get_projects
