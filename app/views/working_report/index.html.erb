@@ -7,7 +7,7 @@
       <div class="extra input fl">
         <form id="form-1" class="form" action="<%= working_report_index_path %>">
           <label>
-            <input name="date" class="date-select" id="datepicker"  type="text">
+            <input name="report_at" class="date-select" id="datepicker" type="text" value="<%= @report_at %>">
           </label>
         </form>
       </div>
@@ -136,7 +136,7 @@
               </select>
             </div></td>
           </tr>
-        </table>          
+        </table>
         <div class="clearfix">
           <div class="fl w49 m_r2">
             <h2>日報</h2>
@@ -160,11 +160,13 @@
 
 <script>
   $(function() {
-    $("#datepicker").datepicker();
-    $("#datepicker").datepicker("option", "showOn", 'button');
-    $("#datepicker").datepicker("option", "buttonImageOnly", true);
-    $("#datepicker").datepicker("option", "buttonImage", 'img/icon-calendar.png');
-    $("#datepicker").datepicker("option", "dateFormat", 'yy-mm-dd');
+    $("#datepicker").datepicker(
+    {
+      showOn: 'button',
+      buttonImageOnly: true,
+      buttonImage: '<%= asset_path 'icon-calendar.png' %>',
+      dateFormat: 'yy-mm-dd'
+    });
   });
 
   $(function (){

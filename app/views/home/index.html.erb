@@ -31,7 +31,7 @@
           <tr>
             <% week.each do |day|%>
               <td>
-                <a href="#" class="<%= (day == @today) ? 'finished' : '' %>"><%= day.day %></a>
+                <a href="<%= working_report_index_path(day) %>" class="<%= (day == @today) ? 'finished' : '' %>"><%= day.day %></a>
                 <%  if holiday = HolidayJp.holiday?(day) %>
                   <div class="holiday"><%= holiday.name %></div>
                 <% end %>

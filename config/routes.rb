@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :working_report
-
+  # resources :working_report
+  get    'working_report(/:report_at)', to: 'working_report#index', as: 'working_report_index'
 
   # namespace :customers do
   #   resources :customer_projects, except: [:show, :index]
