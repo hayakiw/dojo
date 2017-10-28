@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   # resources :working_report
   get    'working_report(/:report_at)', to: 'working_report#index', as: 'working_report_index'
+  get    'working_report_get_projects', to: 'working_report#get_projects', as: 'working_report_get_projects'
 
   # namespace :customers do
   #   resources :customer_projects, except: [:show, :index]
