@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :authenticate_account!
+  
   def index
     @today = Date.today
     year = params[:year].nil? ? @today.year : params[:year].to_i
