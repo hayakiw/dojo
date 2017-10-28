@@ -82,8 +82,8 @@ $(document).ready(function() {
         <% if account_signed_in? %>
           <li><%= link_to "作業実績", working_report_index_path %></li>
           <!-- <li><a href="password.html">パスワード変更</a></li> -->
-          <li><%= link_to "顧客管理", customers_path %></li>
           <% if current_account.admin? %>
+            <li><%= link_to "顧客管理", customers_path %></li>
             <li><%= link_to "ユーザー管理", admins_accounts_path %></li>
           <% end %>
           <li><%= link_to 'プロフィール変更', edit_account_registration_path %></li>
