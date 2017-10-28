@@ -1,33 +1,25 @@
 <tr id="report_row_<%= index %>">
-  <td><input value="" name="start" placeholder="" class="w100" type="time"></td>
-  <td><input value="" name="end" placeholder="" class="w100" type="time"></td>
-  <td><input value="" name="break" placeholder="" class="w100" type="time"></td>
+  <td><input value="" name="start" class="w100" type="time"></td>
+  <td><input value="" name="end" class="w100" type="time"></td>
+  <td><input value="" name="break" class="w100" type="time"></td>
   <td><div class="selectWrap w100">
-    <select name="select" class="select_customer">
-      <option value="1" selected="selected">A</option>
-      <option value="1">B</option>
-      <option value="1">C</option>
-      <option value="1">D</option>
+    <select name="customer_id" class="select_customer">
+      <%= options_for_select(working_report_time.customer_opts, working_report_time.customer_id) %>
     </select>
   </div></td>
   <td><div class="selectWrap w100">
-    <select name="select" class="select_project">
-      <option value="A" selected="selected">A</option>
-      <option value="B">B</option>
-      <option value="C">C</option>
-      <option value="D">D</option>
+    <select name="customer_project_id" class="select_project">
+      <%= options_for_select(working_report_time.project_opts, working_report_time.customer_project_id) %>
     </select>
   </div></td>
   <td><div class="selectWrap w100">
-    <select name="select">
-      <option value="保守" selected="selected">保守</option>
-      <option value="新規">新規</option>
+    <select name="customer_project_work_id" class="select_work">
+      <%= options_for_select(working_report_time.work_opts, working_report_time.customer_project_work_id) %>
     </select>
   </div></td>
   <td><div class="selectWrap w100">
-    <select name="select">
-      <option value="eBase Lab" selected="selected">eBase Lab</option>
-      <option value="other">other</option>
+    <select name="working_place">
+      <%= options_for_select(working_report_time.place_opts, working_report_time.working_place) %>
     </select>
   </div></td>
 </tr>

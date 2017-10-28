@@ -38,7 +38,7 @@
             <td>保守</td>
             <td>eBase Lab</td>
           </tr> -->
-          <%= render 'row', index: 0 %>
+          <%= render 'row', { index: 0, working_report_time: WorkingReportTime.new } %>
         </table>
         <div class="clearfix">
           <div class="fl w49 m_r2">
@@ -88,7 +88,17 @@
         function(data){ }
       );
     });
-    // TODO プロジェクト選択時、作業内容選択時
+
+    // プロジェクト選択時
+    $('.select_project').change(function() {
+      $.get("<%= working_report_get_works_path %>",
+        {
+          row_id: $(this).parents('tr').attr('id'),
+          project_id: $(this).val()
+        },
+        function(data){ }
+      );
+    });
   });
 
 </script>

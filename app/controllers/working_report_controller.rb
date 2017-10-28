@@ -8,4 +8,10 @@ class WorkingReportController < ApplicationController
     @projects = CustomerProject.where(customer_id: params[:customer_id]).pluck(:name, :id)
     @projects.unshift(["選択してください", ""])
   end
+
+  def get_works
+    @row_id = params[:row_id]
+    @works = CustomerProjectWork.where(customer_project_id: params[:project_id]).pluck(:name, :id)
+    @works.unshift(["選択してください", ""])
+  end
 end
