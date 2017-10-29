@@ -12,7 +12,7 @@ class WorkingReportController < ApplicationController
     @key = params[:key]
     @value = params[:value]
 
-    // TODO validation and update
+    # TODO validation and update
   end
 
   def get_projects
