@@ -18,4 +18,8 @@ class WorkingReportController < ApplicationController
     @works = CustomerProjectWork.where(customer_project_id: params[:project_id]).pluck(:name, :id)
     @works.unshift(["選択してください", ""])
   end
+
+  def add_row
+    @index = params[:index]
+  end
 end

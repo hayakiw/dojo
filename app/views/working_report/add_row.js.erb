@@ -1,0 +1,41 @@
+$('<%= escape_javascript(render 'row', { index: @index, working_report_time: WorkingReportTime.new }) %>').appendTo('#working_reports');
+
+
+$(function() {
+  // TODO ひとまず、indexと同様に設定
+  // 顧客名
+  $('.select_customer').change(function() {
+    $.get("<%= working_report_get_projects_path %>",
+      {
+        row_id: $(this).parents('tr').attr('id'),
+        customer_id: $(this).val()
+      },
+      function(data){ }
+    );
+  });
+
+  // プロジェクト選択時
+  $('.select_project').change(function() {
+    $.get("<%= working_report_get_works_path %>",
+      {
+        row_id: $(this).parents('tr').attr('id'),
+        project_id: $(this).val()
+      },
+      function(data){ }
+    );
+  });
+
+  // 選択時
+  row_count = <%= @index %>;
+  $('tr.report_row input, .report_row select').change(function() {
+    if ($(this).val() && $(this).parents('tr.report_row').attr('data-index') == row_count) {
+      row_count += 1;
+      $.get("<%= working_report_add_row_path %>",
+        {
+          index: row_count
+        },
+        function(data){ }
+      );
+    }
+  });
+});

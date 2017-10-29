@@ -1,10 +1,5 @@
   <section class="input_list">
-    <div class="sectionHeader clearfix">
-      <div class="title fl">
-        <h1>一覧</h1>
-      </div>
-      <!-- / .title -->
-      <div class="extra input fl">
+      <div class="contents extra input fl">
         <form id="form-1" class="form" action="<%= working_report_index_path %>">
           <label>
             <input name="report_at" class="date-select" id="datepicker" type="text" value="<%= @report_at %>">
@@ -13,13 +8,11 @@
       </div>
 
       <!-- / .extra -->
-      <div id="form-1-submit" class="extra fl"><a  class="btn addition">表示</a></div>
+      <!-- div id="form-1-submit" class="extra fl"><a  class="btn addition">表示</a></div -->
       <!-- / .extra -->
-    </div>
-    <!-- / .sectionHeader -->
     <div class="contents">
       <form class="form">
-        <table class="deco-tb fs3 m_u30">
+        <table class="deco-tb fs3 m_u30" id="working_reports">
           <tr>
             <th class="w10">開始</th>
             <th class="w10">終了</th>
@@ -38,7 +31,7 @@
             <td>保守</td>
             <td>eBase Lab</td>
           </tr> -->
-          <%= render 'row', { index: 0, working_report_time: WorkingReportTime.new } %>
+          <%= render 'row', { index: 1, working_report_time: WorkingReportTime.new } %>
         </table>
         <div class="clearfix">
           <div class="fl w49 m_r2">
@@ -68,7 +61,10 @@
       showOn: 'button',
       buttonImageOnly: true,
       buttonImage: '<%= asset_path 'icon-calendar.png' %>',
-      dateFormat: 'yy-mm-dd'
+      dateFormat: 'yy-mm-dd',
+      onSelect: function(dateText) {
+        window.location.href = "<%= working_report_index_path %>/" + dateText;
+      }
     });
 
     $('#form-1-submit').on('click', function(){
@@ -98,6 +94,20 @@
         },
         function(data){ }
       );
+    });
+
+    // 選択時
+    row_count = 1;
+    $('tr.report_row input, .report_row select').change(function() {
+      if ($(this).val() && $(this).parents('tr.report_row').attr('data-index') == row_count) {
+        row_count += 1;
+        $.get("<%= working_report_add_row_path %>",
+          {
+            index: row_count
+          },
+          function(data){ }
+        );
+      }
     });
   });
 
