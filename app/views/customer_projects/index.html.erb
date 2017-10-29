@@ -7,17 +7,17 @@ $( function() {
   });
   $(".sortableProject").disableSelection({
     handle: 'div.head',
-  }); 
+  });
   $(".sortable").sortable({
   });
   $(".sortable").disableSelection({
-  }); 
+  });
 } );
 </script>
 <section class="edit">
   <div class="sectionHeader clearfix">
     <div class="title fl">
-      <h1>顧客管理</h1>
+      <h1><%= @customer.name %> - プロジェクト管理</h1>
     </div>
     <!-- / .title -->
     <div class="extra fl"><%= link_to "新規プロジェクト追加", new_customer_customer_project_path, class: "btn addition open" %></div>
@@ -54,7 +54,3 @@ $( function() {
   </div>
   <!-- / .scroll -->
 </section>
-
-
-
-

@@ -4,7 +4,8 @@ class CustomerProjectsController < ApplicationController
   before_action :set_customer, only: [:new, :create]
 
   def index
-    @customer_projects = CustomerProject.where(customer_id: params[:customer_id])
+    @customer = Customer.find(params[:customer_id])
+    @customer_projects = @customer.customer_projects
   end
 
   # GET /customer_projects/new

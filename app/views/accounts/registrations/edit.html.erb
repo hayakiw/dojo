@@ -1,6 +1,6 @@
 <div class="contents">
 
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>プロフィール</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
@@ -20,7 +20,7 @@
 
     <div class="row m_u20">
       <div class="col resp_m_u10">
-        <div class="th">email <span class="label alert">必須</span></div>
+        <div class="th">メールアドレス <span class="label alert">必須</span></div>
         <div class="td">
           <!-- <input value="" name="input" placeholder="" class="w100" id="client" type="text"> -->
             <%= f.email_field :email, autofocus: true %>
@@ -53,7 +53,7 @@
 
     <div class="row m_u20">
       <div class="col resp_m_u10">
-        <div class="th">パスワードの確認 <span class="label alert">必須</span></div>
+        <div class="th">パスワード確認 <span class="label alert">必須</span></div>
         <div class="td">
           <!-- <input value="" name="input" placeholder="" class="w100" id="client" type="text"> -->
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
@@ -76,7 +76,7 @@
     </div>
     <!-- / .row -->
   <div class="btns tc">
-    <%= f.submit "Update", class: "btn green w30 center" %>
+    <%= f.submit "更新", class: "btn green w30 center" %>
     <%= link_to "閉じる", admins_accounts_path, class: "btn default w30 center", target: '_parent' %></div>
   </div>
   <% end %>
