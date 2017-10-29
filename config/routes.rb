@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get    'working_report_get_projects', to: 'working_report#get_projects', as: 'working_report_get_projects'
   get    'working_report_get_works', to: 'working_report#get_works', as: 'working_report_get_works'
   get    'working_report_add_row', to: 'working_report#add_row', as: 'working_report_add_row'
+  get    'working_report_update_db', to: 'working_report#update_db', as: 'working_report_update_db'
 
   # namespace :customers do
   #   resources :customer_projects, except: [:show, :index]

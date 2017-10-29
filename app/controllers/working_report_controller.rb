@@ -4,7 +4,15 @@ class WorkingReportController < ApplicationController
     if @report_at.blank?
       @report_at = Date.today.strftime('%Y-%m-%d')
     end
-    @working_report_times = CustomerProjectWork.where(date: @report_at, account_id: current_account.id.to_i)
+    @working_report_times = WorkingReportTime.where(date: @report_at, account_id: current_account.id.to_i)
+  end
+
+  def update_db
+    @id = params[:id]
+    @key = params[:key]
+    @value = params[:value]
+
+    // TODO validation and update
   end
 
   def get_projects

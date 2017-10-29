@@ -31,7 +31,16 @@
             <td>保守</td>
             <td>eBase Lab</td>
           </tr> -->
+          <% row_count = 1; %>
+          <% if @working_report_times.count == 0 %>
           <%= render 'row', { index: 1, working_report_time: WorkingReportTime.new } %>
+          <% else %>
+            <% row_count = 0; %>
+            <% @working_report_times.each do |working_report_time| %>
+              <% row_count += 1; %>
+              <%= render 'row', { index: row_count, working_report_time: working_report_time } %>
+            <% end %>
+          <% end %>
         </table>
         <div class="clearfix">
           <div class="fl w49 m_r2">
@@ -55,6 +64,8 @@
 
 
 <script>
+  row_count = <%= row_count %>;
+
   $(function() {
     $("#datepicker").datepicker(
     {
@@ -97,8 +108,17 @@
     });
 
     // 選択時
-    row_count = 1;
     $('tr.report_row input, .report_row select').change(function() {
+      // update db
+      $.get("<%= working_report_update_db_path %>",
+        {
+          id: $(this).parents('tr.report_row').attr('data-id'),
+          key: $(this).attr('name'),
+          value: $(this).val()
+        },
+        function(data){ }
+      );
+      //add row
       if ($(this).val() && $(this).parents('tr.report_row').attr('data-index') == row_count) {
         row_count += 1;
         $.get("<%= working_report_add_row_path %>",

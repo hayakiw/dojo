@@ -4,7 +4,7 @@ $('<%= escape_javascript(render 'row', { index: @index, working_report_time: Wor
 $(function() {
   // TODO ひとまず、indexと同様に設定
   // 顧客名
-  $('.select_customer').change(function() {
+  $('#report_row_<%= @index %> .select_customer').change(function() {
     $.get("<%= working_report_get_projects_path %>",
       {
         row_id: $(this).parents('tr').attr('id'),
@@ -15,7 +15,7 @@ $(function() {
   });
 
   // プロジェクト選択時
-  $('.select_project').change(function() {
+  $('#report_row_<%= @index %> .select_project').change(function() {
     $.get("<%= working_report_get_works_path %>",
       {
         row_id: $(this).parents('tr').attr('id'),
@@ -26,8 +26,17 @@ $(function() {
   });
 
   // 選択時
-  row_count = <%= @index %>;
-  $('tr.report_row input, .report_row select').change(function() {
+  $('tr#report_row_<%= @index %> input, tr.#report_row_<%= @index %> select').change(function() {
+    // update db
+    $.get("<%= working_report_update_db_path %>",
+      {
+        id: $(this).parents('tr.report_row').attr('data-id'),
+        key: $(this).attr('name'),
+        value: $(this).val()
+      },
+      function(data){ }
+    );
+    //add row
     if ($(this).val() && $(this).parents('tr.report_row').attr('data-index') == row_count) {
       row_count += 1;
       $.get("<%= working_report_add_row_path %>",
