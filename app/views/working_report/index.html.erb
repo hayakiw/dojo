@@ -4,6 +4,7 @@
           <label>
             <input name="report_at" class="date-select" id="datepicker" type="text" value="<%= @report_at %>">
           </label>
+          <span id="update_message"></span>
         </form>
       </div>
 
@@ -22,35 +23,30 @@
             <th class="w10">作業内容</th>
             <th class="w20">作業場所</th>
           </tr>
-          <!-- <tr>
-            <td>10:00</td>
-            <td>13:00</td>
-            <td>01:00</td>
-            <td>A</td>
-            <td>B</td>
-            <td>保守</td>
-            <td>eBase Lab</td>
-          </tr> -->
           <% row_count = 1; %>
-          <% if @working_report_times.count == 0 %>
-          <%= render 'row', { index: 1, working_report_time: WorkingReportTime.new } %>
-          <% else %>
-            <% row_count = 0; %>
+          <% if @working_report_times.count > 0 %>
             <% @working_report_times.each do |working_report_time| %>
-              <% row_count += 1; %>
               <%= render 'row', { index: row_count, working_report_time: working_report_time } %>
+              <% row_count += 1; %>
             <% end %>
           <% end %>
+
+          <%
+            working_report_time = WorkingReportTime.new
+            working_report_time.date = @report_at
+          %>
+          <%= render 'row', { index: row_count, working_report_time: working_report_time } %>
         </table>
+        <input type="hidden" name="id" value="<%= @working_report_day.nil? ? '' : @working_report_day.id %>">
         <div class="clearfix">
           <div class="fl w49 m_r2">
             <h2>日報</h2>
-            <textarea name="report" placeholder="" class="w100"></textarea>
+            <textarea name="text" placeholder="" class="w100"><%= @working_report_day.nil? ? '' : @working_report_day.text %></textarea>
           </div>
           <!-- / .w49 -->
           <div class="fl w49">
             <h2>備考</h2>
-            <textarea name="remarks" placeholder="" class="w100"></textarea>
+            <textarea name="note" placeholder="" class="w100"><%= @working_report_day.nil? ? '' : @working_report_day.note %></textarea>
           </div>
           <!-- / .w49 -->
         </div>
@@ -61,7 +57,6 @@
     <!-- / .contents -->
   </section>
   <!-- / section -->
-
 
 <script>
   row_count = <%= row_count %>;
@@ -83,6 +78,20 @@
       console.log("============ test1 ");
 
       $('#form-1').submit();
+    });
+
+    // 日報、備考保存
+    $('textarea').change(function() {
+      // update db
+      $.get("<%= working_report_update_day_path %>",
+        {
+          id: $('input[name=id]').val(),
+          key: $(this).attr('name'),
+          value: $(this).val(),
+          report_at: "<%= @report_at %>",
+        },
+        function(data){ }
+      );
     });
   });
 

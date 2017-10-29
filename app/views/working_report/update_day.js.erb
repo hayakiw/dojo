@@ -1,0 +1,9 @@
+<% if @res %>
+$('input[name=id]').val('');
+$('#update_message').text('保存しました。');
+<% else %>
+$('#update_message').text('保存に失敗しました。');
+<% end %>
+setTimeout(function(){
+  $('#update_message').text('');
+},1000);

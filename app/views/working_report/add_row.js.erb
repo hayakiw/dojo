@@ -1,1 +1,5 @@
-$('<%= escape_javascript(render 'row', { index: @index, working_report_time: WorkingReportTime.new }) %>').appendTo('#working_reports');
+<%
+  working_report_time = WorkingReportTime.new
+  working_report_time.date = @report_at
+%>
+$('<%= escape_javascript(render 'row', { index: @index, working_report_time: working_report_time }) %>').appendTo('#working_reports');

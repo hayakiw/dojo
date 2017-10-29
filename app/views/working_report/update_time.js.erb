@@ -1,0 +1,9 @@
+<% if @res %>
+$('#<%= @class_id %>').attr('data-id', '<%= @id %>');
+$('#update_message').text('保存しました。');
+<% else %>
+$('#update_message').text('保存に失敗しました。');
+<% end %>
+setTimeout(function(){
+  $('#update_message').text('');
+},1000);

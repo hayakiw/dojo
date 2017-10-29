@@ -5,14 +5,61 @@ class WorkingReportController < ApplicationController
       @report_at = Date.today.strftime('%Y-%m-%d')
     end
     @working_report_times = WorkingReportTime.where(date: @report_at, account_id: current_account.id.to_i)
+    @working_report_day = WorkingReportDay.where(date: @report_at, account_id: current_account.id.to_i).first
   end
 
-  def update_db
+  def update_time
     @id = params[:id]
-    @key = params[:key]
-    @value = params[:value]
+    key = params[:key]
+    value = params[:value]
+    @class_id = params[:class_id]
+    report_at = params[:report_at]
 
-    # TODO validation and update
+    # validation and update
+    @res = false
+    if @id.blank?
+      report = WorkingReportTime.new({
+        "date" => report_at,
+        "account_id" => current_account.id.to_i,
+        "created_at" => Time.now,
+        "updated_at" => Time.now,
+        key => value
+      })
+      @res = report.save
+      @id = report.id
+    else
+      report = WorkingReportTime.find(@id)
+      @res = report.update({
+        "updated_at" => Time.now,
+        key => value
+      })
+    end
+  end
+
+  def update_day
+    @id = params[:id]
+    key = params[:key]
+    value = params[:value]
+    report_at = params[:report_at]
+
+    @res = false
+    if @id.blank?
+      report = WorkingReportDay.new({
+        "date" => report_at,
+        "account_id" => current_account.id.to_i,
+        "created_at" => Time.now,
+        "updated_at" => Time.now,
+        key => value
+      })
+      @res = report.save
+      @id = report.id
+    else
+      report = WorkingReportDay.find(@id)
+      @res = report.update({
+        "updated_at" => Time.now,
+        key => value
+      })
+    end
   end
 
   def get_projects

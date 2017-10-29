@@ -1,7 +1,7 @@
 <tr id="report_row_<%= index %>" class="report_row" data-index="<%= index %>" data-id="<%= working_report_time.id %>">
-  <td><input value="" name="start" class="w100" type="time"></td>
-  <td><input value="" name="end" class="w100" type="time"></td>
-  <td><input value="" name="break" class="w100" type="time"></td>
+  <td><input name="start_time" class="w100" type="time" value="<%= working_report_time.start_time.nil? ? '' : working_report_time.start_time.strftime("%H:%M") %>"></td>
+  <td><input name="end_time" class="w100" type="time" value="<%= working_report_time.end_time.nil? ? '' : working_report_time.end_time.strftime("%H:%M") %>"></td>
+  <td><input name="rest_time" class="w100" type="time" value="<%= working_report_time.rest_time.nil? ? '' : working_report_time.rest_time.strftime("%H:%M") %>"></td>
   <td><div class="selectWrap w100">
     <select name="customer_id" class="select_customer">
       <%= options_for_select(working_report_time.customer_opts, working_report_time.customer_id) %>
@@ -51,11 +51,13 @@
     // 選択時
     $('tr#report_row_<%= index %> input, tr.#report_row_<%= index %> select').change(function() {
       // update db
-      $.get("<%= working_report_update_db_path %>",
+      $.get("<%= working_report_update_time_path %>",
         {
           id: $(this).parents('tr.report_row').attr('data-id'),
           key: $(this).attr('name'),
-          value: $(this).val()
+          value: $(this).val(),
+          class_id: "report_row_<%= index %>",
+          report_at: "<%= working_report_time.date %>",
         },
         function(data){ }
       );
@@ -72,7 +74,5 @@
     });
   });
   </script>
-
-
   </td>
 </tr>
